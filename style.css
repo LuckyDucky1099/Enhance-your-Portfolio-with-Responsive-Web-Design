@@ -1,0 +1,171 @@
+/* ---------- GLOBAL ---------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* ---------- GRID LAYOUT ---------- */
+.grid-container {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+    min-height: 100vh;
+}
+
+/* ---------- HEADER ---------- */
+.header {
+    grid-area: header;
+    position: sticky;
+    top: 0;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+    z-index: 1000;
+}
+
+/* ---------- SIDEBAR ---------- */
+.sidebar {
+    grid-area: sidebar;
+    background-color: #f4f4f4;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    position: relative;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #333;
+}
+
+/* ---------- RESUME BUTTON ---------- */
+.resume-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background-color: #007BFF;
+    color: white;
+    padding: 12px 16px;
+    border-radius: 8px;
+    transition: background-color 0.3s, border-radius 0.3s, box-shadow 0.3s;
+}
+
+.resume-btn:hover {
+    background-color: #0056b3;
+    border-radius: 20px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+/* ---------- MAIN CONTENT ---------- */
+.main-content {
+    grid-area: main;
+    padding: 30px;
+    display: grid;
+    gap: 40px;
+}
+
+/* ---------- TABLE ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+/* ---------- SKILLS ---------- */
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.skill {
+    background-color: #e3e3e3;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+}
+
+.skill:hover {
+    transform: scale(1.1) rotate(2deg);
+    background-color: #cce5ff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* ---------- PROJECTS ---------- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.project img {
+    width: 100%;
+    max-width: 250px;
+    float: left;
+    margin-right: 15px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.project img:hover {
+    transform: scale(1.05);
+    opacity: 0.85;
+}
+
+/* ---------- FOOTER ---------- */
+.footer {
+    grid-area: footer;
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+
+/* ---------- RESPONSIVE DESIGN ---------- */
+
+/* Mobile */
+@media (max-width: 480px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "main"
+            "footer";
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    body {
+        font-size: 16px;
+    }
+}
